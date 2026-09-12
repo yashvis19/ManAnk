@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: .
+    container_name: mental-health-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    image: nginx:alpine
+    container_name: mental-health-frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "5500:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

@@ -1,0 +1,6 @@
+age,gender,country,academic_level,most_used_platform,purpose_of_use,avg_daily_usage_hours,daily_unlocks,study_hours,physical_activity_hours,sleep_hours_per_night,stress_level
+21,Male,Other,Undergraduate,Facebook,Networking,4.0,134,4.5,2.2,6.7,Medium
+23,Female,Other,Graduate,LinkedIn,Education,1.6,73,7.0,2.4,8.6,Low
+22,Male,Canada,Undergraduate,Instagram,Entertainment,4.6,166,4.0,1.8,6.7,Medium
+18,Male,Other,High School,Snapchat,Entertainment,7.0,220,1.0,1.7,5.4,Very High
+24,Female,Other,Graduate,Facebook,Networking,7.5,237,1.0,1.1,5.0,Very High

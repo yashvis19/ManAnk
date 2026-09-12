@@ -1,0 +1,38 @@
+{
+  "model_version": "2.0.0",
+  "model_type": "RandomForestRegressor",
+  "trained_at_utc": "2026-09-12T18:06:00.338681+00:00",
+  "python_version": "3.12.3",
+  "sklearn_version": "1.8.0",
+  "feature_columns": [
+    "Study_Hours",
+    "Age",
+    "Avg_Daily_Usage_Hours",
+    "Daily_Unlocks",
+    "Physical_Activity_Hours",
+    "Sleep_Hours_Per_Night",
+    "Stress_Level",
+    "Gender",
+    "Academic_Level",
+    "Most_Used_Platform",
+    "Purpose_Of_Use",
+    "Grouped_country"
+  ],
+  "target_column": "Mental_Health_Score",
+  "best_params": {
+    "model__n_estimators": 300,
+    "model__min_samples_split": 2,
+    "model__min_samples_leaf": 1,
+    "model__max_features": "log2",
+    "model__max_depth": 20
+  },
+  "cv_best_r2": 0.8772235684749099,
+  "training_rows": 3998,
+  "test_rows": 1000,
+  "notes": "Final held-out test metrics are written to model_metadata.json by evaluate.py after this script runs. cv_best_r2 above is cross-validated training performance, not a test-set score.",
+  "test_metrics": {
+    "r2": 0.9007845749587526,
+    "mae": 0.30867647914943586,
+    "rmse": 0.42085649143324755
+  }
+}
