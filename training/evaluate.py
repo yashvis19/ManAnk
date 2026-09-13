@@ -1,19 +1,8 @@
-"""
-Evaluate the saved model on the untouched test set and update model_metadata.json
-with the honest final numbers.
 
-Usage:
-    python training/evaluate.py
-
-This loads the exact test-set row indices that train.py held out (from
-models/test_split.json) rather than re-splitting, so we're 100% sure these
-rows were never used for training or hyperparameter tuning.
-"""
 
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))  # allow `python training/x.py` from project root
-
+sys.path.insert(0, str(Path(__file__).parent.parent))  
 import json
 from pathlib import Path
 

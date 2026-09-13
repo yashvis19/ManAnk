@@ -1,16 +1,8 @@
-"""
-Compare candidate models using cross-validation on the TRAINING split only.
 
-Run directly to print a comparison table:
-    python training/model_comparison.py
-
-This never touches the held-out test set. That set is reserved for
-evaluate.py, after a model has already been chosen here.
-"""
 
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))  # allow `python training/x.py` from project root
+sys.path.insert(0, str(Path(__file__).parent.parent)) 
 
 import json
 from pathlib import Path
@@ -31,8 +23,7 @@ RANDOM_STATE = 42
 def load_data():
     df = pd.read_csv(DATA_PATH)
     df = df.drop_duplicates()
-    # Physical activity hours can't be negative; clip rather than drop the row
-    # so we keep the rest of that student's otherwise-valid data.
+    
     df["Physical_Activity_Hours"] = df["Physical_Activity_Hours"].clip(lower=0)
     df["Grouped_country"] = df["Country"].apply(group_country)
 
@@ -80,8 +71,7 @@ def compare_models(X_train, y_train, cv_folds: int = 5) -> dict:
 
 def main():
     X, y = load_data()
-    # Same split logic as train.py, so the comparison reflects the real
-    # training data the final model will be trained on.
+    
     X_train, _, y_train, _ = train_test_split(
         X, y, test_size=0.2, random_state=RANDOM_STATE
     )

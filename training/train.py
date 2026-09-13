@@ -1,22 +1,8 @@
-"""
-Train the final model and save it to models/mental_health_model.pkl,
-along with models/model_metadata.json.
 
-Usage:
-    python training/train.py
-
-This script assumes model_comparison.py has already been used to decide
-which algorithm to use (Random Forest, based on the comparison in this
-project — see models/model_comparison.json after running that script).
-It re-splits the data the same way, tunes hyperparameters with
-RandomizedSearchCV, and fits the final pipeline on the training set only.
-The test set is untouched here — evaluate.py is what reports final,
-honest numbers on data the model has never seen.
-"""
 
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))  # allow `python training/x.py` from project root
+sys.path.insert(0, str(Path(__file__).parent.parent))  
 
 import json
 import platform
@@ -41,8 +27,8 @@ DATA_PATH = Path(__file__).parent.parent / "data" / "Student Social Media And Me
 MODEL_DIR = Path(__file__).parent.parent / "models"
 MODEL_PATH = MODEL_DIR / "mental_health_model.pkl"
 METADATA_PATH = MODEL_DIR / "model_metadata.json"
-SPLIT_PATH = MODEL_DIR / "test_split.json"  # row indices held out, used by evaluate.py
-BASELINES_PATH = MODEL_DIR / "feature_baselines.json"  # used by explainability at predict time
+SPLIT_PATH = MODEL_DIR / "test_split.json"  
+BASELINES_PATH = MODEL_DIR / "feature_baselines.json"  
 
 RANDOM_STATE = 42
 MODEL_VERSION = "2.0.0"
@@ -63,9 +49,7 @@ def main():
     X = df[FEATURE_COLUMNS]
     y = df[TARGET_COLUMN]
 
-    # Keep the same split as evaluate.py by fixing random_state and saving
-    # the exact test-set indices, so evaluate.py can reload the *same*
-    # untouched rows rather than trusting that re-splitting gives identical results.
+   
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=RANDOM_STATE
     )
@@ -103,10 +87,7 @@ def main():
 
     joblib.dump(best_pipeline, MODEL_PATH, compress=3)
 
-    # Save typical ("baseline") values for each feature from the training set.
-    # explainability.py uses these at prediction time: it swaps one feature at
-    # a time for its baseline and re-predicts, so the drop/rise in score shows
-    # how much that feature actually pulled the prediction away from "typical".
+  
     baselines = {}
     for col in FEATURE_COLUMNS:
         if X_train[col].dtype.kind in "if":  # numeric

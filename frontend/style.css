@@ -54,9 +54,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
+/*HEADER*/
 .site-header {
   padding: 64px 24px 32px;
   position: relative;
@@ -407,9 +405,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
   }
 }
 
-/* =========================================================
-   RESULT PANEL
-   ========================================================= */
+/* RESULT PANEL */
 .result-inner {
   width: 100%;
   padding: 40px 32px;
@@ -696,7 +692,8 @@ input:invalid:not(:placeholder-shown):not(:focus) {
     transition-duration: 0.001ms !important;
   }
 }
-/* ── Contributing factors, model info, disclaimer ─────────────── */
+
+/* Contributing factors, model info, disclaimer*/
 .factors-block {
   width: 100%;
   margin-top: 18px;
@@ -738,8 +735,13 @@ input:invalid:not(:placeholder-shown):not(:focus) {
   font-size: 11px;
 }
 
-.factor-up .factor-arrow { color: var(--coral); }
-.factor-down .factor-arrow { color: var(--sage); }
+.factor-up .factor-arrow {
+  color: var(--coral);
+}
+
+.factor-down .factor-arrow {
+  color: var(--sage);
+}
 
 .factor-name {
   color: var(--ink);
@@ -766,7 +768,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
   color: var(--ink-soft);
 }
 
-/* ── Batch prediction panel ───────────────────────────────────── */
+/*  Batch prediction panel  */
 .batch-panel {
   max-width: 960px;
   margin: 32px auto 0;

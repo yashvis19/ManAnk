@@ -15,12 +15,8 @@ from sklearn.preprocessing import (
     OrdinalEncoder,
 )
 import numpy as np
-
-# ── Column groups ────────────────────────────────────────────────
-# Study_Hours is right-skewed, so it gets a log transform before scaling.
 SKEWED_NUMERIC_COL = ["Study_Hours"]
 
-# Other numeric columns just get standard scaling.
 OTHER_NUMERIC_COLS = [
     "Age",
     "Avg_Daily_Usage_Hours",
@@ -29,11 +25,11 @@ OTHER_NUMERIC_COLS = [
     "Sleep_Hours_Per_Night",
 ]
 
-# Stress level has a natural order, so it's ordinal-encoded (not one-hot).
+
 ORDINAL_COL = ["Stress_Level"]
 STRESS_ORDER = [["Low", "Medium", "High", "Very High"]]
 
-# These have no natural order, so they're one-hot encoded.
+
 ONE_HOT_COLS = [
     "Gender",
     "Academic_Level",
@@ -42,17 +38,14 @@ ONE_HOT_COLS = [
     "Grouped_country",
 ]
 
-# The full, ordered list of columns the model expects as input.
-# The API must build its input DataFrame with exactly these columns.
+
 FEATURE_COLUMNS = (
     SKEWED_NUMERIC_COL + OTHER_NUMERIC_COLS + ORDINAL_COL + ONE_HOT_COLS
 )
 
 TARGET_COLUMN = "Mental_Health_Score"
 
-# The top countries kept as their own category; everything else becomes "Other".
-# Frozen here (not recomputed at predict time) so the API's behavior can never
-# silently change if the training data changes.
+
 TOP_COUNTRIES = [
     "USA", "India", "UK", "Canada", "Germany",
     "Australia", "Mexico", "Turkey", "France", "Brazil",

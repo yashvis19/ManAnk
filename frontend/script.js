@@ -1,8 +1,6 @@
 (() => {
   "use strict";
 
-  // Point this at your deployed backend URL once you deploy it.
-  // Left as localhost for local development with `uvicorn app.main:app --reload`.
   const API_BASE = "http://127.0.0.1:8000";
 
   const form = document.getElementById("predict-form");
@@ -178,7 +176,7 @@
     scoreBandEl.textContent = label;
     scoreContextEl.textContent = context;
 
-    // reset then animate the arc fill on next frame
+
     gaugeFill.style.transition = "none";
     gaugeFill.style.strokeDashoffset = String(GAUGE_ARC_LENGTH);
     requestAnimationFrame(() => {
@@ -187,7 +185,7 @@
       gaugeFill.style.strokeDashoffset = String(offset);
     });
 
-    // Contributing factors, from the API's explainability output.
+
     factorsListEl.innerHTML = "";
     (data.top_factors || []).forEach((f) => {
       const li = document.createElement("li");
@@ -231,9 +229,7 @@
     return matched;
   }
 
-  // ---------------------------------------------------------
-  // Submit handler
-  // ---------------------------------------------------------
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearAllErrors();
@@ -294,7 +290,6 @@
     }
   });
 
-  // live-clear errors as the user edits
   form.querySelectorAll("input, select").forEach((el) => {
     el.addEventListener("input", () => clearFieldError(el));
     el.addEventListener("change", () => clearFieldError(el));
@@ -308,9 +303,6 @@
     showState("idle");
   });
 
-  // ---------------------------------------------------------
-  // Batch prediction (CSV upload)
-  // ---------------------------------------------------------
   const batchForm = document.getElementById("batch-form");
   const batchFileInput = document.getElementById("batch-file");
   const batchSubmitBtn = document.getElementById("batch-submit-btn");

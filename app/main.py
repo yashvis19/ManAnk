@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes import batch_predict, health, predict
 
 app = FastAPI(
-    title="Mental Health Score Prediction API",
+    title="ManAnk API",
     description=(
         "Predicts a student's mental health score (0-10) from academic, "
         "lifestyle, and social-media-usage factors, using a cross-validated "
@@ -21,8 +21,6 @@ app = FastAPI(
     ),
     version="2.0.0",
 )
-
-# In production, replace "*" with your actual deployed frontend URL(s).
 ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",

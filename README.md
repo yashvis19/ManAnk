@@ -1,4 +1,4 @@
-# Mental Health Score Prediction System
+#ManAnk- Mental Health Score Prediction System
 
 An end-to-end machine learning application that predicts a student's mental
 health score (0-10) from academic, lifestyle, and social-media-usage habits.
@@ -258,10 +258,4 @@ docker run -p 8000:8000 mental-health-api
 - Not validated against any clinical mental-health assessment (e.g. PHQ-9,
   GAD-7) — the 0-10 score is specific to this dataset's own labeling.
 
-## Future scope
 
-- Add SHAP-based explainability as an alternative to the ablation method
-- Track prediction drift and retrain on a cadence as new data comes in
-- Add authentication and per-user rate limiting for the batch endpoint
-- Expand the model comparison to include XGBoost/LightGBM
-- Add a lightweight admin view of `/health` and `model_metadata.json` history
